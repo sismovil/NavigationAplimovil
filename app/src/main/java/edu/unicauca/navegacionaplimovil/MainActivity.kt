@@ -5,9 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,8 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -34,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Navegacion(navHostController = rememberNavController())
+                    NavigationComposable(navHostController = rememberNavController())
                 }
             }
         }
@@ -44,33 +42,33 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Navegacion(navHostController: NavHostController = rememberNavController()){
+fun NavigationComposable(navHostController: NavHostController = rememberNavController()){
 
     NavHost(
         navController = navHostController,
-        startDestination = Pantallas.Inicio.name) {
-        composable(route = Pantallas.Inicio.name){
-            Pantalla(
-                title = "Pantalla Inicial",
-                actionTitle = "Siguiente",
+        startDestination = ScreensEnum.Home.name) {
+        composable(route = ScreensEnum.Home.name){
+            Screen(
+                title = stringResource(R.string.home_screen_title),
+                actionTitle = stringResource(R.string.bt_next),
                 color = Color.Yellow,
-                onClick = {navHostController.navigate(Pantallas.Segunda.name)}
+                onClick = {navHostController.navigate(ScreensEnum.Second.name)}
             )
         }
-        composable(route = Pantallas.Segunda.name){
-            Pantalla(
-                title = "Segunda Pantalla",
-                actionTitle = "Siguiente",
+        composable(route = ScreensEnum.Second.name){
+            Screen(
+                title = stringResource(R.string.second_screen_title),
+                actionTitle = stringResource(R.string.bt_next),
                 color = Color.Red,
-                onClick = {navHostController.navigate(Pantallas.Tercera.name)}
+                onClick = {navHostController.navigate(ScreensEnum.Third.name)}
             )
         }
-        composable(route = Pantallas.Tercera.name){
-            Pantalla(
-                title = "Pantalla Final",
-                actionTitle = "Ir al Inicio",
+        composable(route = ScreensEnum.Third.name){
+            Screen(
+                title = stringResource(R.string.third_screen_title),
+                actionTitle = stringResource(R.string.bt_home),
                 color = Color.Gray,
-                onClick = {navHostController.navigate(Pantallas.Inicio.name)}
+                onClick = {navHostController.navigate(ScreensEnum.Home.name)}
             )
         }
 
@@ -78,10 +76,10 @@ fun Navegacion(navHostController: NavHostController = rememberNavController()){
 }
 
 @Composable
-fun Pantalla(title: String,
-             actionTitle: String,
-             onClick: () -> Unit,
-             color: Color
+fun Screen(title: String,
+           actionTitle: String,
+           onClick: () -> Unit,
+           color: Color
 ){
     Surface(color = color) {
         Column (horizontalAlignment = Alignment.CenterHorizontally,
@@ -100,19 +98,19 @@ fun Pantalla(title: String,
 @Composable
 fun PreviewInicial(){
     NavegacionAplimovilTheme {
-        Pantalla(
-            title = "Ejemplo Pantalla",
-            actionTitle = "Accion",
+        Screen(
+            title = "Sample Screen",
+            actionTitle = "Action",
             color = Color.Gray,
             onClick = {}
         )
     }
 }
 
-enum class Pantallas(){
-    Inicio,
-    Segunda,
-    Tercera,
+enum class ScreensEnum(){
+    Home,
+    Second,
+    Third,
 }
 
 

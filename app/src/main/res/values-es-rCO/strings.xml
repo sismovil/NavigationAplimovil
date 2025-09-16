@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NavegacionAplimovil</string>
+    <string name="home_screen_title">Pantalla Inicial</string>
+    <string name="second_screen_title">Segunda Pantalla</string>
+    <string name="third_screen_title">Tercera Pantalla</string>
+    <string name="bt_next">Siguiente</string>
+    <string name="bt_home">Ir al Inicio</string>
+</resources>

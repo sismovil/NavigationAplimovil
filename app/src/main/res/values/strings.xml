@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NavegacionAplimovil</string>
+    <string name="home_screen_title">Home Screen</string>
+    <string name="second_screen_title">Second Screen</string>
+    <string name="third_screen_title">Third Screen</string>
+    <string name="bt_next">Next</string>
+    <string name="bt_home">Home</string>
 </resources>
